@@ -2,6 +2,8 @@ package com.hackfmi.summer2013.exam.scheduler.dto;
 
 import java.util.Date;
 
+import com.hackfmi.summer2013.exam.scheduler.utils.DateUtil;
+
 public class ExamRequest {
 
 	private int id;
@@ -20,10 +22,10 @@ public class ExamRequest {
 	public ExamRequest(int teacherId, int subjectId, int specialtyId,
 			String day, int duration, boolean proposal,
 			String submited, String description, boolean exam, int room) {
-		this.day = day;
+		this.day = DateUtil.stringToDate(day);
 		this.duration = duration;
 		this.proposal = proposal;
-		this.submited = submited;
+		this.submited = DateUtil.stringToDate(submited);
 		this.description = description;
 		this.exam = exam;
 		this.room = room;
@@ -33,12 +35,12 @@ public class ExamRequest {
 	}
 	
 	public ExamRequest(int teacherId, int subjectId, int specialtyId,
-			int groupId, Date day, int duration, boolean proposal,
-			Date submited, String description, boolean exam, int room) {
-		this.day = day;
+			int groupId, String day, int duration, boolean proposal,
+			String submited, String description, boolean exam, int room) {
+		this.day = DateUtil.stringToDate(day);
 		this.duration = duration;
 		this.proposal = proposal;
-		this.submited = submited;
+		this.submited = DateUtil.stringToDate(submited);
 		this.description = description;
 		this.exam = exam;
 		this.room = room;
