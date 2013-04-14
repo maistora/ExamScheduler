@@ -11,6 +11,9 @@ import com.hackfmi.summer2013.exam.scheduler.dto.JustDummy;
 @Service
 public class DummyService {
 
+	
+	
+	
 	public List<JustDummy> getDummies() {
 		final ArrayList<JustDummy> dummies = new ArrayList<JustDummy>();
 		for (int i = 0; i < 10; i++) {

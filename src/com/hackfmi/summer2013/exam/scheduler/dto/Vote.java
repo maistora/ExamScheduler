@@ -2,22 +2,21 @@ package com.hackfmi.summer2013.exam.scheduler.dto;
 
 public class Vote {
 
-	private Exam exam;
+	private ExamRequest exam;
 	private Student student;
 	private int vote;
 	
-	public Vote(Exam exam, Student student, int vote) {
-		super();
+	public Vote(ExamRequest exam, Student student, int vote) {
 		this.exam = exam;
 		this.student = student;
 		this.vote = vote;
 	}
 
-	public Exam getExam() {
+	public ExamRequest getExam() {
 		return exam;
 	}
 	
-	public void setExam(Exam exam) {
+	public void setExam(ExamRequest exam) {
 		this.exam = exam;
 	}
 	

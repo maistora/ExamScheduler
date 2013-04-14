@@ -15,5 +15,4 @@ public class DateSerializer extends JsonSerializer<Date> {
 			throws IOException, JsonProcessingException {
 		jsonGen.writeString(DateUtil.dateToString(date));
 	}
-
 }
