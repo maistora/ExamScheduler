@@ -6,13 +6,17 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.hackfmi.summer2013.exam.scheduler.dao.DataBaseController;
 import com.hackfmi.summer2013.exam.scheduler.dto.JustDummy;
 
 @Service
 public class DummyService {
 
+	DataBaseController dbController;
 	
-	
+	DummyService() {
+		dbController = new DataBaseController();
+	}
 	
 	public List<JustDummy> getDummies() {
 		final ArrayList<JustDummy> dummies = new ArrayList<JustDummy>();
