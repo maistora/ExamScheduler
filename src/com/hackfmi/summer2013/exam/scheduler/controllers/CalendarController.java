@@ -1,11 +1,8 @@
 package com.hackfmi.summer2013.exam.scheduler.controllers;
 
-import java.util.Date;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,8 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
 
-import com.hackfmi.summer2013.exam.scheduler.dto.Exam;
-import com.hackfmi.summer2013.exam.scheduler.dto.JustDummy;
+import com.hackfmi.summer2013.exam.scheduler.dto.ExamRequest;
 import com.hackfmi.summer2013.exam.scheduler.services.DummyService;
 import com.hackfmi.summer2013.exam.scheduler.utils.DateUtil;
 
@@ -55,7 +51,7 @@ public class CalendarController {
 	}
 	
 	@RequestMapping(value="/saveExam/", method = RequestMethod.POST)
-	public ModelAndView saveExam(@RequestBody Exam exam) {
+	public ModelAndView saveExam(@RequestBody ExamRequest exam) {
 		return createNewErrorResponse("saveExam placeholder");
 	}
 	
