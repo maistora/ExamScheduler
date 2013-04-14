@@ -14,4 +14,9 @@ public class DateUtil {
 		final DateTimeFormatter dateFormatter = DateTimeFormat.forPattern(SIMPLE_PATTERN);
 		return dateFormatter.print(new DateTime(date));
 	}
+	
+	public static Date stringToDate(String string) {
+		final DateTimeFormatter dateFormatter = DateTimeFormat.forPattern(SIMPLE_PATTERN);
+		return dateFormatter.parseDateTime(string).toDate();
+	}
 }

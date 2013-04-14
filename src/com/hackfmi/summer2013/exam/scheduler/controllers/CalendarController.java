@@ -1,16 +1,22 @@
 package com.hackfmi.summer2013.exam.scheduler.controllers;
 
-import java.util.List;
+import java.util.Date;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
 
+import com.hackfmi.summer2013.exam.scheduler.dto.Exam;
 import com.hackfmi.summer2013.exam.scheduler.dto.JustDummy;
 import com.hackfmi.summer2013.exam.scheduler.services.DummyService;
+import com.hackfmi.summer2013.exam.scheduler.utils.DateUtil;
 
 @Controller
 @RequestMapping("/calendar")
@@ -18,35 +24,44 @@ public class CalendarController {
 
 	@Autowired
 	private DummyService dummyService;
-	
+
 	@Autowired
 	private View jsonView;
-	
+
 	private Logger log = Logger.getLogger(CalendarController.class);
-	
+
 	@RequestMapping("/load")
 	public ModelAndView loadCalendar() {
 		return createNewErrorResponse("loadCalendar placeholder");
 	}
-	
-	@RequestMapping("/getSubjects")
-	public ModelAndView getSubjects() {
+
+	@RequestMapping(value = "/getSubjects/", method = RequestMethod.GET)
+	public ModelAndView getSubjects(@RequestParam("teacherId") int teacherId) {
 		return createNewErrorResponse("getSubjects placeholder");
 	}
-	
-	@RequestMapping("/getSpecialty")
-	public ModelAndView getSpecialty() {
-		return createNewErrorResponse("getSpecialty placeholder");
+
+	@RequestMapping(value = "/getSpecialty/", method = RequestMethod.GET)
+	public ModelAndView getSpecialty(@RequestParam("teacherId") int teacherId,
+			@RequestParam("subjectId") int subjectId) {
+		return createNewErrorResponse("teacherId = " + teacherId
+				+ ", subjectId = " + subjectId);
 	}
-	
-	@RequestMapping("/getGroups")
-	public ModelAndView getGroups() {
+
+	@RequestMapping(value = "/getGroups/", method = RequestMethod.GET)
+	public ModelAndView getGroups(@RequestParam("teacherId") int teacherId,
+			@RequestParam("subjectId") int subjectId,
+			@RequestParam("specialtyId") int specialtyId) {
 		return createNewErrorResponse("getGroups placeholder");
 	}
 	
-	@RequestMapping("/saveExam")
-	public ModelAndView saveExam() {
+	@RequestMapping(value="/saveExam/", method = RequestMethod.POST)
+	public ModelAndView saveExam(@RequestBody Exam exam) {
 		return createNewErrorResponse("saveExam placeholder");
+	}
+	
+	@RequestMapping(value="/test/", method = RequestMethod.GET)
+	public ModelAndView test(@RequestParam("date") String date) {
+		return createNewErrorResponse(DateUtil.stringToDate(date).toString());
 	}
 
 	public ModelAndView createNewErrorResponse(String message) {
